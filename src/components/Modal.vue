@@ -57,7 +57,7 @@ defineProps({
 }
 
 .modal-enter-active, .modal-leave-active {
-    transition: opacity 1s;
+    transition: opacity .5s;
 }
 
 .modal-enter-from, .modal-leave-to {
