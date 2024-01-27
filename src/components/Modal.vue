@@ -5,19 +5,21 @@ defineProps({
 </script>
 
 <template>
-    <div v-if="show" class="modal-mask">
-        <div class="modal-container">
-            <div>
-                <slot>default body</slot>
-            </div>
+    <Transition name="modal">
+        <div v-if="show" class="modal-mask">
+            <div class="modal-container">
+                <div>
+                    <slot>default body</slot>
+                </div>
 
-            <footer class="modal-footer">
-                <slot name="footer">
-                    <button @click="$emit('close')">Close</button>
-                </slot>
-            </footer>
+                <footer class="modal-footer">
+                    <slot name="footer">
+                        <button @click="$emit('close')">Close</button>
+                    </slot>
+                </footer>
+            </div>
         </div>
-    </div>
+    </Transition>
 </template>
 
 <style>
@@ -52,5 +54,17 @@ defineProps({
 
 .modal-footer button:hover {
     background: #c8c8c8;
+}
+
+.modal-enter-active, .modal-leave-active {
+    transition: opacity 1s;
+}
+
+.modal-enter-from, .modal-leave-to {
+    opacity: 0
+}
+
+.modal-enter-to, .modaal-leave-from {
+    opacity: 100;
 }
 </style>
